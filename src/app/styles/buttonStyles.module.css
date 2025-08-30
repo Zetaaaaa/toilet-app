@@ -1,0 +1,12 @@
+.navButton{
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 50px;
+    width: 80px;
+    text-align: center;
+    background-color: white;
+}
+
+.navButton:hover{
+    color: invert;
+}
