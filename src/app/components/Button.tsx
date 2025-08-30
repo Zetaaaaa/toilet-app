@@ -1,0 +1,22 @@
+import React from 'react'
+import styles from "../styles/buttonStyles.module.css"
+import { NextFont } from 'next/dist/compiled/@next/font';
+
+
+//WHAT ARE INTERFACES AND TYPES
+interface ButtonProps {
+  font: NextFont;
+  text: string;
+  click: () => void;
+}
+function Button({font,text,click}:ButtonProps) {
+  return (
+    <div className={`${styles.navButton} ${font.className}`}
+    onClick={click}>
+        <p>{text}</p>
+    </div>
+
+  )
+}
+
+export default Button
