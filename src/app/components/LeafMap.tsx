@@ -34,7 +34,7 @@ function LeafMap({position,zoom}:LeafMapProps) {
             <ZoomControl position='bottomright'></ZoomControl>
             <Marker position={position}>
                 <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
+                    Hey! <br /> {"I'm a marker"}
                 </Popup>
             </Marker>
            
