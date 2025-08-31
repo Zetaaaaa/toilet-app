@@ -12,7 +12,10 @@ interface ButtonProps {
 function Button({font,text,click}:ButtonProps) {
   return (
     <div className={`${styles.navButton} ${font.className}`}
+
+      
     onClick={()=>click(text)}>
+
         <p>{text}</p>
     </div>
 

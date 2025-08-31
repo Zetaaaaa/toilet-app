@@ -10,6 +10,7 @@ function main() {
   return (
     <div className={styles.body}>
         <Navbar/>
+
         <div className={styles.mapComponent}>
            {/* <MapComponent></MapComponent> */}
              <LeafRender></LeafRender>
