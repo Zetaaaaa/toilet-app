@@ -7,12 +7,12 @@ import { NextFont } from 'next/dist/compiled/@next/font';
 interface ButtonProps {
   font: NextFont;
   text: string;
-  click: () => void;
+  click: (text:string) => void;
 }
 function Button({font,text,click}:ButtonProps) {
   return (
     <div className={`${styles.navButton} ${font.className}`}
-    onClick={click}>
+    onClick={()=>click(text)}>
         <p>{text}</p>
     </div>
 
