@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import styles from "../styles/searchBar.module.css"
 import { NextFont } from 'next/dist/compiled/@next/font';
 

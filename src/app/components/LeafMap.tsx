@@ -1,6 +1,7 @@
 import React from 'react'
 // src/components/Map.tsx
-import { MapContainer, Marker, Popup, TileLayer, Tooltip, ZoomControl } from "react-leaflet"
+
+import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
@@ -34,7 +35,7 @@ function LeafMap({position,zoom}:LeafMapProps) {
             <ZoomControl position='bottomright'></ZoomControl>
             <Marker position={position}>
                 <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
+                    Hey! <br /> {"I'm a marker"}
                 </Popup>
             </Marker>
            
