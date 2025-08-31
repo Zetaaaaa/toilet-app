@@ -1,26 +1,43 @@
 "use client"
-import React from 'react'
 import localFont from 'next/font/local'
 import Button from './Button'
 import styles from '../styles/navBar.module.css'
 import Searchbar from './Searchbar'
+import { useRouter,usePathname } from 'next/navigation'
 
-const geographlight = localFont({
+const font = localFont({
         src: "../fonts/geograph/geographweblight.ttf",
 })
-function handleClick(){
-      console.log("click");
-}
+
+
 function Navbar() {
-  
+      const router  = useRouter() 
+      const path = usePathname()
+
+      //Routing by updating component,then useEffect
+      // const [route ,setRoute]= useState(" ")
+      // useEffect(()=>{
+
+      //       router.push(route)
+      
+      // },[route])
+
+      function handleClick(route:string){
+            
+            // setRoute(route)
+            router.push(route.split(' ')[0].toLocaleLowerCase())
+      }
+
+
   return (
       <div className={styles.topBar}>
           <div className={styles.searchBar}>
-                <Searchbar font={geographlight} text={"Search for an address of a Toilet Point"}></Searchbar>
+                <Searchbar font={font} text={"Search for an address of a Toilet Point"}></Searchbar>
                </div>
                <div className={styles.navButtons}>
-                <Button font={geographlight} text={"IDK"} click={handleClick}></Button>
-                <Button font={geographlight} text={"Options"} click={handleClick}></Button>
+                <Button font={font} text="About" click={handleClick}></Button>
+                <Button font={font} text="Options" click={handleClick}></Button>
+                <Button font={font} text="Contact Us" click={handleClick}></Button>
                </div>
         </div>
   )
