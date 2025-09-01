@@ -15,7 +15,7 @@ function LeafRender() {
 
   return (
     <div>
-        <Map position={{lat:50.062616, lng:19.941303}} zoom={6} />
+        <Map position={{lat:50.062616, lng:19.941303}} zoom={11} />
     </div>
   )
 }
