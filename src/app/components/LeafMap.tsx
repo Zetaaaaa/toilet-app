@@ -1,13 +1,13 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 // src/components/Map.tsx
 
-import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from "react-leaflet"
+import { MapContainer, Marker, Popup, TileLayer, useMapEvents, ZoomControl } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 import localFont from "next/font/local" 
 import styles from "../styles/leafMap.module.css"
-import { randomInt } from 'crypto'
+import L from "leaflet";
 
 type Position = {
   lat: number;
@@ -38,7 +38,7 @@ const geograph = localFont({
         return(19.89+ Math.random()*0.11)
     }
 
-     function randomMarkers():Position[]{
+    function randomMarkers():Position[]{
         const markersArr : Position[] = []
         for(let i=0;i<=randNum(100);i++){
             markersArr.push(
@@ -51,6 +51,7 @@ const geograph = localFont({
 
         return markersArr
     }
+
 
     const markers : Position[] = [
         {
@@ -74,26 +75,64 @@ const geograph = localFont({
 
 function LeafMap({position,zoom}:LeafMapProps) {
 
+    const[pos, setPos]= useState<[number, number]>([0,0])
+    const[marks, setMarks]= useState<Position[]>([])
+
+    useEffect(()=>{
+    setMarks(randomMarkers())
+
+    },[])
+    
+    
+    function MapClicks(){
   
-    const arr :Position[] = randomMarkers()
+        const map = useMapEvents({
+            click(e) {
+                console.log("Clicked at:", e.latlng);
+
+                //Add only ONE marker changing every map click (state changes,the marker also)
+                    setPos([e.latlng.lat,e.latlng.lng]);
+                
+                //add it permanently to rest of the markers but tbh i don't need it
+                        // const popup = L.popup().setContent("popup")
+                        // L.marker(e.latlng)
+                        //     .bindPopup(popup)
+                        //     .addTo(map)
+                    },
+        });
+        return (
+                    pos ? 
+                        <Marker           
+                        key={pos[0]}
+                        position={pos}
+                        interactive={true} >
+                            <Popup><p>Marker</p></Popup>
+                        </Marker>
+                    : null
+                )  
+    }
+
 
   return (
-        <MapContainer center={position} zoom={zoom} zoomControl={false} attributionControl={false} scrollWheelZoom={'center'} className={styles.leafMap} >
+        <MapContainer center={position} zoom={zoom} zoomControl={false} attributionControl={false}  scrollWheelZoom={'center'} className={styles.leafMap} >
             <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <ZoomControl position='bottomright'></ZoomControl>
+
+            {/* zoom controls <ZoomControl position='bottomright'></ZoomControl> */}
             
             {/* Mapping functionality */}
-            {arr.map((coords,i)=>(<Marker key={i} position={coords}>
+            {marks.map((coords,i)=>(<Marker key={i} position={coords}>
                  <Popup>
                     {coords.text}<br/>
                     <p>Lat: {coords.lat}</p> 
                     <p>Lng: {coords.lng}</p>
-                </Popup>
+                </Popup>   
             </Marker>))}
+            <MapClicks/>
 
+            
            
         </MapContainer>
     
