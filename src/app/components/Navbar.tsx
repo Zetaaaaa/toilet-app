@@ -36,7 +36,7 @@ function Navbar() {
                </div>
                <div className={styles.navButtons}>
                 <Button font={font} text="About" click={handleClick}></Button>
-                <Button font={font} text="Options" click={handleClick}></Button>
+                <Button font={font} text="playground" click={handleClick}></Button>
                 <Button font={font} text="Contact Us" click={handleClick}></Button>
                </div>
         </div>
