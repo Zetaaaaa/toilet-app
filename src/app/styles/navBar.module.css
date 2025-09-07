@@ -14,11 +14,6 @@
   /* transition: flex-grow 1000ms cubic-bezier(0.645, 0.045, 0.355, 1) 100ms; */
 }
 
-/* .searchBar:hover,
-.searchBar:active {
-  flex-grow: 2; /* target state on hover/active 
-} 
-*/
 
 .navButtons{
     /* flex-grow: 1; */
