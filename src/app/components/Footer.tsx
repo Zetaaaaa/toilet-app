@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import localFont from 'next/font/local'
-import Button from './Button'
+import { Button } from '@/components/ui/button'
 import styles from '../styles/footerStyles.module.css'
 import { popup } from 'leaflet'
 
@@ -23,13 +23,12 @@ function Footer() {
       },[popup])
 
   function openForm(){
-     
       setPopup(true)
   }
   
   return (
-    <div className={styles.container}>
-       <Button font={font} text="Add toilet" click={openForm} btWidth='20vw'></Button>
+    <div className='flex flex-row justify-center font-geograph-light-italic bottom-2 align-center w-1/1 h-1/20 absolute z-2'>
+       <Button onClick={openForm}>Search</Button>
     </div>
   
   )

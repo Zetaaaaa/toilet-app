@@ -1,5 +1,5 @@
-import styles from "../styles/searchBar.module.css"
 import { NextFont } from 'next/dist/compiled/@next/font';
+import { Input } from "@/components/ui/input"
 
 interface SearchbarProps {
   font: NextFont;
@@ -10,12 +10,8 @@ interface SearchbarProps {
 
 function Searchbar({font,text}: SearchbarProps ) {
   return (
-    <div className={styles.searchBar}>
-      <input
-        className={`${styles.input} ${font.className}`}
-        placeholder={text}
-        type="text"
-      />
+    <div >
+      <Input type='search'></Input>
     </div>
   );
 }

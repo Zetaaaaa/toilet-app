@@ -1,10 +1,13 @@
 import React from 'react'
-import Popup from "./components/Popup"
+import Form from "./components/Form"
+import Navbar from './components/Navbar'
 
 function page() {
   return (
     <div>
-      <Popup></Popup>
+      <Navbar></Navbar>
+      <div className='font-geograph-light-italic'>There&apos;s not much here for now</div>
+      
     </div>
 
   )
