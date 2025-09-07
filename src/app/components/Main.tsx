@@ -1,39 +1,37 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import MapComponent from './MapComponent'
-import styles from '../styles/mainStyles.module.css'
 import LeafRender from './LeafRender'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import Popup from './Popup'
+import NavbarNew from './NavbarNew'
+// import Popup from './Popup'
 
 
 function Main() {
 
-  const[helpView, setHelpView] = useState(false)
+    const[helpView, setHelpView] = useState(false)
+    const [footerVisible, setVisible] = useState(false)
 
   useEffect(()=>{
 
   },[helpView])
 
   return (
-    <div className={styles.container}>
-        <Navbar/>
+    <div >
+        <NavbarNew visible={setVisible}/>
 
         {/* <div className={styles.footer}>
           <Footer/>
         </div> */}
-
-        {(helpView)? (<Popup/>): (null)}
-       
-       
-      
-        <div className={styles.mapComponent}>
+        
+        <div>
            {/* <MapComponent></MapComponent> */}
              <LeafRender></LeafRender>
         </div>
+
+        {footerVisible?<Footer></Footer>:null}
        
-         <Footer/>
     </div>
   )
 }
