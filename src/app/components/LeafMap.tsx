@@ -91,13 +91,13 @@ function LeafMap({position,zoom}:LeafMapProps) {
                 console.log("Clicked at:", e.latlng);
 
                 //Add only ONE marker changing every map click (state changes,the marker also)
-                    setPos([e.latlng.lat,e.latlng.lng]);
+                    // setPos([e.latlng.lat,e.latlng.lng]);
                 
                 //add it permanently to rest of the markers but tbh i don't need it
-                        // const popup = L.popup().setContent("popup")
-                        // L.marker(e.latlng)
-                        //     .bindPopup(popup)
-                        //     .addTo(map)
+                        const popup = L.popup().setContent("popup")
+                        L.marker(e.latlng)
+                            .bindPopup(popup)
+                            .addTo(map)
                     },
         });
         return (
