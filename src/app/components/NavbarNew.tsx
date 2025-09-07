@@ -1,0 +1,56 @@
+'use client'
+import React, { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
+interface NavbarProps{
+    visible:(text:boolean)=>void;
+}
+
+function Navbar({visible}:NavbarProps) {
+
+    const router  = useRouter() 
+    const path = usePathname()
+
+    const [address, setAddress] = useState('')
+      function handleClick(route:string){
+            
+            // setRoute(route)
+            router.push(route.split(' ')[0].toLocaleLowerCase())
+      }
+
+   
+
+    function logAddress(){
+        console.log(address.length);
+    }
+
+    function addToilet(){
+        console.log("Add Toilet");
+        alert("Add Toilet")   
+    }
+
+  return (
+    <div className='flex flex-row w-full p-5 bg-transparent absolute z-2'>
+        <div className='w-1/2'>
+            <Input onInput={(e)=>{
+                setAddress(e.currentTarget.value)
+                if(e.currentTarget.value.length >0){
+                    visible(true)
+                }
+                
+            }} className='h-12 inset-shadow-sm bg-white hover:ring-blue-500 inset-shadow-neutral-500 font-geograph-light' placeholder='Search for a Toilet address'></Input>
+        </div>
+        <div className='w-1/2 flex flex-row justify-around'>
+            <Button onClick={()=>handleClick('/about')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>About</Button>
+            <Button onClick={()=>addToilet()} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Add Toilet</Button>
+            <Button onClick={()=>handleClick('/playground')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Playground</Button>
+            <Button onClick={()=>handleClick('/contact')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Contact us</Button>
+        </div>
+        
+    </div>
+  )
+}
+
+export default Navbar
