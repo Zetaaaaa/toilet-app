@@ -14,21 +14,13 @@ function addToilet(){
 }
 
 function Footer() {
-      const[popup ,setPopup] = useState(false)
-
-      useEffect(()=>{
-        if(popup){
-          addToilet()
-        }
-      },[popup])
-
-  function openForm(){
-      setPopup(true)
-  }
+    function search(){
+      console.log("Witam");
+    }
   
   return (
     <div className='flex flex-row justify-center font-geograph-light-italic bottom-2 align-center w-1/1 h-1/20 absolute z-2'>
-       <Button onClick={openForm}>Search</Button>
+       <Button onClick={search}>Search</Button>
     </div>
   
   )
