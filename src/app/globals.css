@@ -10,8 +10,9 @@ body{
 
 /* FONTS */
 @theme {
-    --font-geograph-light: 'Geograph', sans-serif;
-    --font-geograph-light-italic: 'Geograph-italic', sans-serif;
+    --font-geograph-light: 'Geograph-light', sans-serif;
+    --font-geograph-light-italic: 'Geograph-light-italic', sans-serif;
+    --font-geograph-it-bold: 'Geograph-it',sans-serif
 
 }
 
