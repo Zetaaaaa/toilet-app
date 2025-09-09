@@ -8,7 +8,7 @@ function LeafRender() {
     const Map = useMemo(() => dynamic(
     () => import('./LeafMap'),
     { 
-      loading: () => <p>A map is loading</p>,
+      loading: () => <p className='justify-self-center'>A map is loading</p>,
       ssr: false
     }
   ), [])
