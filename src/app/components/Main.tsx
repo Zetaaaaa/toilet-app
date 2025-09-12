@@ -6,12 +6,19 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import NavbarNew from './NavbarNew'
 
-
-
 function Main() {
 
+  async function fetchMockData() {
+      const response = await fetch("api/toilets")
+      const result = await response.json()
+      // console.log(result);
+      
+      setMockData(result)
+  }
+
+    const [mockData, setMockData]=useState(JSON.parse('{}'))
     const[helpView, setHelpView] = useState(false)
-    const [footerVisible, setVisible] = useState(false)
+    const [footerVisible, setVisible] = useState(true)
     const [addToilet, setAddToilet] = useState(true)
 
   useEffect(()=>{
@@ -24,11 +31,11 @@ function Main() {
         
         <div>
            {/* <MapComponent></MapComponent> */}
-             <LeafRender></LeafRender>
+             <LeafRender markerData={mockData}></LeafRender>
         </div>
 
 
-        {footerVisible?<Footer></Footer>:null}
+        {footerVisible?<Footer fetchMockData={fetchMockData}></Footer>:null}
        
     </div>
   )

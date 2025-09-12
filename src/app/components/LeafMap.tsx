@@ -1,6 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 // src/components/Map.tsx
-
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents, ZoomControl } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
 import "leaflet-defaulticon-compatibility"
@@ -16,15 +15,21 @@ type Position = {
   text?:string //temporary field going to be replaced by onclick layout
 };
 
+interface ToiletPointData{
+        id:number,
+        address: string,
+        latitude:number,
+        longitude:number,
+        price:number,
+        toilet_name:string,
+        description?:string
+}
+
 interface LeafMapProps{
     position: Position
     zoom: number
+    markerData: ToiletPointData[]
 }
-
-
-const geograph = localFont({
-  src: "../fonts/geograph/geographweblight.ttf",
-})
 
 //temporary functions to test functionalities
     function randNum(max:number){
@@ -40,7 +45,7 @@ const geograph = localFont({
 
     function randomMarkers():Position[]{
         const markersArr : Position[] = []
-        for(let i=0;i<=randNum(100);i++){
+        for(let i=1;i<=randNum(100);i++){
             markersArr.push(
                 {
                     lat:randLat(),
@@ -73,16 +78,32 @@ const geograph = localFont({
 
    
 
-function LeafMap({position,zoom}:LeafMapProps) {
+function LeafMap({position,zoom,markerData}:LeafMapProps) {
 
-    const[pos, setPos]= useState<[number, number]>([0,0])
+   const [pos, setPos] = useState<[number, number] | null>(null);
     const[marks, setMarks]= useState<Position[]>([])
 
     useEffect(()=>{
-    setMarks(randomMarkers())
-
+    // setMarks(randomMarkers())
     },[])
     
+    useEffect(()=>{
+        console.log("Changed");
+
+       console.log(markerData.length);
+       
+       if(markerData.length>0){
+        const markerArr:Position[]=[]
+            for(const index in markerData){
+                markerArr.push({
+                    lat: markerData[index].latitude,
+                    lng: markerData[index].longitude,
+                    text: markerData[index].address,
+                })
+            }
+            setMarks(markerArr)
+        }
+    },[markerData])
     
     function MapClicks(){
   
@@ -100,16 +121,19 @@ function LeafMap({position,zoom}:LeafMapProps) {
                             .addTo(map)
                     },
         });
-        return (
-                    pos ? 
-                        <Marker           
-                        key={pos[0]}
-                        position={pos}
-                        interactive={true} >
-                            <Popup><p>Marker</p></Popup>
-                        </Marker>
-                    : null
-                )  
+       return (
+            pos && (
+                <Marker
+                key={`${pos[0]}-${pos[1]}`} // safer unique key
+                position={pos}
+                interactive={true}
+                >
+                <Popup>
+                    <p>Marker</p>
+                </Popup>
+                </Marker>
+            )
+);
     }
 
 
@@ -122,7 +146,7 @@ function LeafMap({position,zoom}:LeafMapProps) {
 
             {/* zoom controls <ZoomControl position='bottomright'></ZoomControl> */}
             
-            {/* Mapping functionality */}
+            Mapping functionality
             {marks.map((coords,i)=>(<Marker key={i} position={coords}>
                  <Popup>
                     {coords.text}<br/>
@@ -132,8 +156,7 @@ function LeafMap({position,zoom}:LeafMapProps) {
             </Marker>))}
             <MapClicks/>
 
-            
-           
+        
         </MapContainer>
     
   )
