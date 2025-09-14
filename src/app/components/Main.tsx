@@ -27,7 +27,7 @@ function Main() {
 
   return (
     <div>
-        <NavbarNew visible={setVisible}/>
+        <NavbarNew />
         
         <div>
            {/* <MapComponent></MapComponent> */}
