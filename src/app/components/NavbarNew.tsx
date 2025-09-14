@@ -6,23 +6,18 @@ import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import AddToiletDialog from './AddToiletDialog'
 import { SearchIcon } from 'lucide-react'
-interface NavbarProps{
-    visible:(text:boolean)=>void;
-}
 
-function Navbar({visible}:NavbarProps) {
+function Navbar() {
 
     const router  = useRouter() 
     const path = usePathname()
 
     const [address, setAddress] = useState('')
-      function handleClick(route:string){
+    function handleClick(route:string){
             
-            // setRoute(route)
-            router.push(route.split(' ')[0].toLocaleLowerCase())
-      }
-
-   
+        // setRoute(route)
+        router.push(route.split(' ')[0].toLocaleLowerCase())
+    }
 
     function logAddress(){
         console.log(address.length);
@@ -57,13 +52,6 @@ function Navbar({visible}:NavbarProps) {
                 console.log('input');
                 
                 setAddress(e.currentTarget.value)
-                if(e.currentTarget.value.length >0){
-                    visible(true)
-                }
-                else{
-                    visible(false)
-                }
-                
             }} className='h-12 pl-10 inset-shadow-sm bg-white hover:ring-blue-500 inset-shadow-neutral-500 font-geograph-light' placeholder='Search for a Toilet address'></Input>
         </div>
         <div className='w-1/2 flex flex-row justify-around'>

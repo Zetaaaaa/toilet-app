@@ -10,10 +10,14 @@ function Main() {
 
   async function fetchMockData() {
       const response = await fetch("api/toilets")
-      const result = await response.json()
-      // console.log(result);
+      if(response.ok){
+        const result = await response.json()
+        // console.log(result);
+        setMockData(result)
+        setVisible(false)
+      }
       
-      setMockData(result)
+
   }
 
     const [mockData, setMockData]=useState(JSON.parse('{}'))
