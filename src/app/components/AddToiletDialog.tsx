@@ -13,18 +13,13 @@ import {
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea';
 import { Separator } from '@/components/ui/separator'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { Label } from '@/components/ui/label'
 import OpenTimesPopover from './OpenTimesPopover'
 interface FormProps{
   getData:(Name:string,Address:string, Description:string)=>void;
+  text : string;
 }
 
-function AddToiletDialog({getData}:FormProps) {
+function AddToiletDialog({getData,text}:FormProps) {
 
   const[toiletAddress , setToiletAddress] = useState("")
   const[toiletName, setToiletName] = useState("")
@@ -33,7 +28,7 @@ function AddToiletDialog({getData}:FormProps) {
     <div>
         <Dialog>
             <DialogTrigger asChild>
-                <Button className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Add Toilet</Button>
+                <Button className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>{text}</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
