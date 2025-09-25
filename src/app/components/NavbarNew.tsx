@@ -13,19 +13,21 @@ function Navbar() {
     const path = usePathname()
 
     const [address, setAddress] = useState('')
-    function handleClick(route:string){
+    const[loggedIn, setLoggedIn] = useState()
+
+    function setRoute(route:string){
             
         // setRoute(route)
-        router.push(route.split(' ')[0].toLocaleLowerCase())
+        // console.log(route);
+        console.log(route.split(' ')[0].toLocaleLowerCase());
+        
+    
+        // router.push(route.split(' ')[0].toLocaleLowerCase())
+        router.push(route)
     }
 
     function logAddress(){
         console.log(address.length);
-    }
-
-    function addToilet(){
-        console.log("Add Toilet");
-        alert("Add Toilet")   
     }
 
     function getDialogData(Name:string, Address:string,Description:string){
@@ -50,16 +52,22 @@ function Navbar() {
         
             <Input onInput={(e)=>{
                 console.log('input');
-                
                 setAddress(e.currentTarget.value)
             }} className='h-12 pl-10 inset-shadow-sm bg-white hover:ring-blue-500 inset-shadow-neutral-500 font-geograph-light' placeholder='Search for a Toilet address'></Input>
         </div>
         <div className='w-1/2 flex flex-row justify-around'>
-            <Button onClick={()=>handleClick('/about')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>About</Button>
+            <Button onClick={()=>setRoute('/about')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>About</Button>
             {/* <Button onClick={()=>addToilet()} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Add Toilet</Button> */}
-            <AddToiletDialog getData={getDialogData}></AddToiletDialog>
-            <Button onClick={()=>handleClick('/playground')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Playground</Button>
-            <Button onClick={()=>handleClick('/contact')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Contact us</Button>
+            <AddToiletDialog text={"Add toilet"} getData={getDialogData}></AddToiletDialog>
+            <Button onClick={()=>setRoute('/playground')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Playground</Button>
+ 
+            {loggedIn?
+                <>
+                <Button onClick={()=>setRoute('/contact')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Contact us</Button>
+                <Button className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'> My account</Button>
+                </>
+                :
+                <Button onClick={()=>setRoute('/login')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Log in</Button>}
         </div>
         
     </div>
