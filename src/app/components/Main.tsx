@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import MapComponent from './MapComponent'
 import LeafRender from './LeafRender'
-import Navbar from './Navbar'
+import Navbar from '../old components/Navbar'
 import Footer from './Footer'
 import NavbarNew from './NavbarNew'
 
