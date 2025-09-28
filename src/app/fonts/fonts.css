@@ -1,20 +1,20 @@
 @layer base {
   @font-face {
-    font-family: 'Geograph-light';
+    font-family: 'Geograph-web-light';
     src: url('./geograph/geographweblight.ttf') format('truetype');
     font-weight: 300; /* optional, if this is the "light" version */
     font-style: normal;
     font-display: swap;
   }
    @font-face {
-    font-family: 'Geograph-light-italic';
+    font-family: 'Geograph-web-light-italic';
     src: url('./geograph/geographweblightitalic.ttf') format('truetype');
     font-weight: 300; /* optional, if this is the "light" version */
     font-style: normal;
     font-display: swap;
   }
   @font-face{
-    font-family: 'Geograph-it';
+    font-family: 'Geograph-web-light-bold';
     src: url('./geograph/geographeditwebbold.ttf');
     font-style: normal;
     font-display: swap;

@@ -15,14 +15,14 @@ function Navbar() {
         <div className='w-1/2'>
             <Input onInput={(e)=>{
                 setAddress(e.currentTarget.value)
-            }} className='h-12 inset-shadow-sm  inset-shadow-neutral-900 font-geograph-light' placeholder='Search for a Toilet address'></Input>
+            }} className='h-12 inset-shadow-sm  inset-shadow-neutral-900 font-geograph-web-light' placeholder='Search for a Toilet address'></Input>
         </div>
         <div className='w-1/2 flex flex-row justify-around'>
-            <Button className='w-25 h-12 p-5 rounded-lg hover:bg-sky-900 font-geograph-light'>About</Button>
+            <Button className='w-25 h-12 p-5 rounded-lg hover:bg-sky-900 font-geograph-web-light'>About</Button>
             <Button onClick={
                 ()=>logAddress()
-            } className='w-25 h-12 p-5 rounded-lg bg-sky-700 hover:bg-neutral-900 font-geograph-light'>Playground</Button>
-            <Button className='w-25 h-12 p-5 rounded-lg hover:bg-sky-700 font-geograph-light'>Contact us</Button>
+            } className='w-25 h-12 p-5 rounded-lg bg-sky-700 hover:bg-neutral-900 font-geograph-web-light'>Playground</Button>
+            <Button className='w-25 h-12 p-5 rounded-lg hover:bg-sky-700 font-geograph-web-light'>Contact us</Button>
         </div>
         
     </div>

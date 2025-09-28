@@ -13,7 +13,7 @@ function Navbar() {
     const path = usePathname()
 
     const [address, setAddress] = useState('')
-    const[loggedIn, setLoggedIn] = useState()
+    const[loggedIn, setLoggedIn] = useState(false)
 
     function setRoute(route:string){
             
@@ -53,21 +53,21 @@ function Navbar() {
             <Input onInput={(e)=>{
                 console.log('input');
                 setAddress(e.currentTarget.value)
-            }} className='h-12 pl-10 inset-shadow-sm bg-white hover:ring-blue-500 inset-shadow-neutral-500 font-geograph-light' placeholder='Search for a Toilet address'></Input>
+            }} className='h-12 pl-10 inset-shadow-sm bg-white hover:ring-blue-500 inset-shadow-neutral-500 font-geograph-web-light' placeholder='Search for a Toilet address'></Input>
         </div>
         <div className='w-1/2 flex flex-row justify-around'>
-            <Button onClick={()=>setRoute('/about')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>About</Button>
-            {/* <Button onClick={()=>addToilet()} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Add Toilet</Button> */}
+            <Button onClick={()=>setRoute('/about')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-web-light'>About</Button>
+            {/* <Button onClick={()=>addToilet()} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-web-light'>Add Toilet</Button> */}
             <AddToiletDialog text={"Add toilet"} getData={getDialogData}></AddToiletDialog>
-            <Button onClick={()=>setRoute('/playground')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Playground</Button>
+            <Button onClick={()=>setRoute('/playground')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-web-light'>Playground</Button>
  
             {loggedIn?
                 <>
-                <Button onClick={()=>setRoute('/contact')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Contact us</Button>
-                <Button className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'> My account</Button>
+                <Button onClick={()=>setRoute('/contact')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-web-light'>Contact us</Button>
+                <Button className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-web-light'> My account</Button>
                 </>
                 :
-                <Button onClick={()=>setRoute('/login')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-light'>Log in</Button>}
+                <Button onClick={()=>setRoute('/login')} className='w-25 h-12 p-5 rounded-lg bg-sky-600 hover:bg-sky-500 font-geograph-web-light'>Log in</Button>}
         </div>
         
     </div>

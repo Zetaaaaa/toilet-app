@@ -1,6 +1,6 @@
 "use client"
 import localFont from 'next/font/local'
-import Button from '../components/Button'
+import Button from './ButtonOLD'
 import styles from '../styles/navBar.module.css'
 import Searchbar from '../components/Searchbar'
 import { useRouter,usePathname } from 'next/navigation'

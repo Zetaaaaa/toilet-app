@@ -14,7 +14,7 @@ function page() {
   return (
     <div>
       <Navbar></Navbar>
-      <div className='font-geograph-light-italic'>There&apos;s not much here for now</div>
+      <div className='font-geograph-web-light-italic'>There&apos;s not much here for now</div>
       <Button onClick={()=>getQuery()}>witam</Button>
       
     </div>

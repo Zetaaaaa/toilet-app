@@ -19,7 +19,7 @@ function Footer({fetchMockData}:footerProps) {
     }
   
   return (
-    <div className='flex flex-row justify-center font-geograph-light-italic bottom-2 align-center w-1/1 h-1/20 absolute z-2'>
+    <div className='flex flex-row justify-center font-geograph-web-light-italic bottom-2 align-center w-1/1 h-1/20 absolute z-2'>
        <Button onClick={()=>{
         fetchMockData()
         }}>Fetch mock data</Button>

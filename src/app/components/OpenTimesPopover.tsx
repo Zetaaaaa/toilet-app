@@ -18,12 +18,12 @@ function OpenTimesPopover({day}:PopoverTimeProps) {
           <PopoverContent className="w-80">
         <div className="grid gap-4">
           <div className="space-y-2">
-            <h4 className="leading-none font-medium font-geograph-light">Opening hours - {day}</h4>
-            <p className="text-muted-foreground text-sm font-geograph-light-italic">
+            <h4 className="leading-none font-medium font-geograph-web-light">Opening hours - {day}</h4>
+            <p className="text-muted-foreground text-sm font-geograph-web-light-italic">
               Set the opening time for {day}
             </p>
             <div className="grid grid-cols-2 items-center gap-4">
-              <Label className='font-geograph-light' htmlFor='time-open'>Opening time</Label>
+              <Label className='font-geograph-web-light' htmlFor='time-open'>Opening time</Label>
                   <Input
                   type="time"
                   id="time-open"
@@ -31,7 +31,7 @@ function OpenTimesPopover({day}:PopoverTimeProps) {
                   defaultValue="10:30:00"
                   className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
                 />
-                  <Label className='font-geograph-light' htmlFor='time-close'>Closing time</Label>
+                  <Label className='font-geograph-web-light' htmlFor='time-close'>Closing time</Label>
                   <Input
                   type="time"
                   id="time-close"
